@@ -221,7 +221,7 @@ function ExpertiseSection() {
       location: 'Myat Taw Win Hospital, Taunggyi',
       description:
         'Providing day-to-day technical support, troubleshooting hardware and software issues, assisting users, and helping maintain reliable IT operations in the hospital environment.',
-      date: 'August 26 2025 - Present',
+      date: 'September 26 2025 - Present',
     },
     {
       title: 'C# and React Web Developer',
