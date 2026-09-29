@@ -5,28 +5,21 @@ import cvFile from './assets/Nay-Myo-Maung-CV.pdf'
 const navLinks = [
   { label: 'Home', to: '#home' },
   { label: 'About', to: '#about' },
-  { label: 'Skills', to: '#skills' },
   { label: 'Expertise', to: '#expertise' },
   { label: 'Projects', to: '#projects' },
   { label: 'Contact', to: '#contact' },
 ]
 
-const homeActions = [
-  { label: 'View Projects', to: '#projects' },
-  { label: 'My Skills', to: '#skills' },
-  { label: 'Contact', to: '#contact' },
-]
-
-const nbCard = 'border-[3px] border-black bg-white shadow-[6px_6px_0_0_#111]'
+const nbCard = 'border-[3px] border-black bg-white shadow-[6px_6px_0_0_#111] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[10px_10px_0_0_#111]'
 const nbBtnPrimary =
-  'inline-flex items-center justify-center gap-3 border-[3px] border-black bg-[#ffe500] px-6 py-3 text-sm font-bold uppercase tracking-wide text-black shadow-[4px_4px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_#111]'
+  'nb-btn-underline inline-flex items-center justify-center gap-3 border-[3px] border-black bg-[#ffe500] px-6 py-3 text-sm font-bold uppercase tracking-wide text-black shadow-[4px_4px_0_0_#111] transition-all duration-300 hover:-translate-y-1 hover:bg-[#ff7ad9] hover:shadow-[6px_6px_0_0_#111] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_#111]'
 const nbBtnSecondary =
-  'inline-flex items-center justify-center border-[3px] border-black bg-white px-6 py-3 text-sm font-bold uppercase tracking-wide text-black shadow-[4px_4px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_#111]'
+  'nb-btn-underline inline-flex items-center justify-center border-[3px] border-black bg-white px-6 py-3 text-sm font-bold uppercase tracking-wide text-black shadow-[4px_4px_0_0_#111] transition-all duration-300 hover:-translate-y-1 hover:bg-[#00e1ff] hover:shadow-[6px_6px_0_0_#111] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[2px_2px_0_0_#111]'
 const nbBadge =
-  'inline-flex border-[3px] border-black bg-[#7cff6b] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-black shadow-[3px_3px_0_0_#111]'
+  'inline-flex border-[3px] border-black bg-[#7cff6b] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-black shadow-[3px_3px_0_0_#111] transition-all duration-300 hover:-rotate-2 hover:scale-105'
 const nbChip =
-  'border-[3px] border-black bg-[#fff4b0] px-4 py-2 text-xs font-bold uppercase tracking-wide text-black shadow-[3px_3px_0_0_#111] sm:text-sm'
-const sectionWrap = 'relative scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20 lg:px-8'
+  'border-[3px] border-black bg-[#fff4b0] px-4 py-2 text-xs font-bold uppercase tracking-wide text-black shadow-[3px_3px_0_0_#111] transition-all duration-300 hover:-translate-y-0.5 hover:rotate-2 hover:scale-105 hover:bg-[#ffe500] sm:text-sm'
+const sectionWrap = 'relative scroll-mt-24 border-b-[3px] border-black px-4 py-16 sm:px-6 sm:py-20 lg:px-8'
 const sectionInner = 'relative mx-auto max-w-7xl'
 
 function Navbar() {
@@ -40,7 +33,7 @@ function Navbar() {
         <a
           href="#home"
           onClick={closeMenu}
-          className="border-[3px] border-black bg-white px-3 py-1 text-sm font-black tracking-[0.18em] text-black uppercase shadow-[3px_3px_0_0_#111]"
+          className="border-[3px] border-black bg-white px-3 py-1 text-sm font-black tracking-[0.18em] text-black uppercase shadow-[3px_3px_0_0_#111] transition-all duration-300 hover:-rotate-2 hover:scale-105 hover:bg-[#7cff6b]"
         >
           Nay Myo Maung
         </a>
@@ -48,7 +41,7 @@ function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((open) => !open)}
-          className="inline-flex items-center justify-center border-[3px] border-black bg-white px-3 py-2 text-black shadow-[3px_3px_0_0_#111] md:hidden"
+          className="inline-flex items-center justify-center border-[3px] border-black bg-white px-3 py-2 text-black shadow-[3px_3px_0_0_#111] transition-all duration-300 hover:rotate-90 hover:bg-[#ffe500] md:hidden"
           aria-expanded={isOpen}
           aria-label="Toggle navigation"
         >
@@ -82,16 +75,16 @@ function NavItem({ to, label, onClick }) {
     <a
       href={to}
       onClick={onClick}
-      className="border-[3px] border-black bg-white px-4 py-2 text-sm font-bold uppercase tracking-wide text-black shadow-[3px_3px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-[#ff7ad9] hover:shadow-[2px_2px_0_0_#111]"
+      className="border-[3px] border-black bg-white px-4 py-2 text-sm font-bold uppercase tracking-wide text-black shadow-[3px_3px_0_0_#111] transition-all duration-300 hover:-translate-y-1 hover:rotate-[-1deg] hover:scale-105 hover:bg-[#ff7ad9] hover:shadow-[5px_5px_0_0_#111] active:translate-y-0 active:shadow-[2px_2px_0_0_#111]"
     >
       {label}
     </a>
   )
 }
 
-function InfoSection({ id, eyebrow, title, description, actions = [] }) {
+function InfoSection({ id, eyebrow, title, description, actions = [], bg = 'bg-[#f4efe4]' }) {
   return (
-    <section id={id} className={sectionWrap}>
+    <section id={id} className={`${sectionWrap} ${bg}`}>
       <div className={`${sectionInner} flex min-h-[calc(100vh-81px)] items-center justify-center`}>
         <div className="max-w-3xl text-center">
           <span className={nbBadge}>{eyebrow}</span>
@@ -113,10 +106,10 @@ function InfoSection({ id, eyebrow, title, description, actions = [] }) {
 }
 
 function HomeSection() {
-  const stack = ['C#', '.NET', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase']
+  const stack = ['C#', '.NET', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'SQL']
 
   return (
-    <section id="home" className={sectionWrap}>
+    <section id="home" className={`${sectionWrap} bg-white`}>
       <div className={`${sectionInner} flex min-h-[calc(100vh-81px)] items-center justify-center`}>
         <div className="max-w-3xl text-center">
           <span className={nbBadge}>C# + React Developer — Available for work</span>
@@ -127,7 +120,7 @@ function HomeSection() {
           <p className="mt-4 text-sm font-bold uppercase tracking-[0.22em] text-neutral-700">
             Taunggyi, Myanmar — Enterprise Web Apps
           </p>
-          <p className="mx-auto mt-6 max-w-2xl border-[3px] border-black bg-white p-5 text-base leading-8 text-neutral-800 shadow-[6px_6px_0_0_#111] sm:text-lg">
+          <p className="mx-auto mt-6 max-w-2xl border-[3px] border-black bg-white p-5 text-base leading-8 text-neutral-800 shadow-[6px_6px_0_0_#111] transition-all duration-300 hover:-translate-y-1 hover:shadow-[10px_10px_0_0_#111] sm:text-lg">
             I build modern, scalable, and user-friendly enterprise web applications with robust
             backend architecture, responsive front-end interfaces, clean code, and efficient
             AI-assisted workflows.
@@ -139,17 +132,13 @@ function HomeSection() {
               </span>
             ))}
           </div>
-          {/* link-style actions like reference design */}
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <a href="#projects" className={`${nbBtnPrimary} group`}>
               View Projects
-              <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-1">→</span>
+              <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-125">→</span>
             </a>
-            <a href="#skills" className="inline-flex items-center gap-2 px-2 py-3 text-sm font-bold uppercase tracking-wide text-black underline decoration-[3px] decoration-[#ff7ad9] underline-offset-8 transition hover:bg-[#ff7ad9] hover:decoration-black">
-              My Skills <span aria-hidden="true">→</span>
-            </a>
-            <a href="#contact" className="inline-flex items-center gap-2 px-2 py-3 text-sm font-bold uppercase tracking-wide text-black underline decoration-[3px] decoration-[#00e1ff] underline-offset-8 transition hover:bg-[#00e1ff] hover:decoration-black">
-              Contact <span aria-hidden="true">→</span>
+            <a href="#contact" className={`${nbBtnSecondary} group`}>
+              Contact <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:translate-x-2 group-hover:scale-125">→</span>
             </a>
           </div>
         </div>
@@ -169,7 +158,7 @@ function AboutSection() {
   ]
 
   return (
-    <section id="about" className={sectionWrap}>
+    <section id="about" className={`${sectionWrap} bg-white`}>
       <div className={sectionInner}>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div className={`${nbCard} p-8 sm:p-10`}>
@@ -197,15 +186,15 @@ function AboutSection() {
                   </span>
                 ))}
               </div>
-              <a href={cvFile} download="Nay-Myo-Maung-CV.pdf" className={`${nbBtnPrimary} mt-8`}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-5 w-5" aria-hidden="true">
+              <a href={cvFile} download="Nay-Myo-Maung-CV.pdf" className={`${nbBtnPrimary} group mt-8`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-5 w-5 transition-transform duration-300 group-hover:translate-y-1 group-hover:scale-110" aria-hidden="true">
                   <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" strokeLinecap="square" strokeLinejoin="miter" />
                 </svg>
                 Download CV
               </a>
             </div>
 
-            <div className="border-[3px] border-black bg-[#ff7ad9] p-8 shadow-[6px_6px_0_0_#111]">
+            <div className="border-[3px] border-black bg-[#ff7ad9] p-8 shadow-[6px_6px_0_0_#111] transition-all duration-300 hover:-translate-y-1.5 hover:rotate-1 hover:shadow-[10px_10px_0_0_#111]">
               <p className="text-xs font-black uppercase tracking-[0.22em] text-black">Focus</p>
               <p className="mt-4 text-sm leading-8 text-black sm:text-base">
                 Modern technology, continuous learning, clean web interfaces, scalable systems, and practical solutions with real-world value.
@@ -213,55 +202,6 @@ function AboutSection() {
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  )
-}
-
-function SkillsSection() {
-  const rowA = ['C#', '.NET', 'React', 'TypeScript', 'Tailwind CSS', 'Vite', 'REST APIs']
-  const rowB = ['Supabase', 'PostgreSQL', 'Git', 'GitHub', 'Vercel', 'AI-Assisted Dev', 'IT Support']
-
-  const MarqueeRow = ({ items, reverse = false, bg = 'bg-[#ffe500]' }) => {
-    const doubled = [...items, ...items]
-    return (
-      <div className={`marquee-mask border-y-[3px] border-black ${bg} py-3`}>
-        <div className={`flex w-max items-center gap-3 pr-3 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}>
-          {doubled.map((skill, i) => (
-            <span
-              key={`${skill}-${i}`}
-              className="inline-flex shrink-0 items-center gap-2 border-[3px] border-black bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-black shadow-[3px_3px_0_0_#111] sm:text-sm"
-            >
-              <span aria-hidden="true" className="inline-block h-2.5 w-2.5 border-2 border-black bg-[#ff7ad9]" />
-              {skill}
-            </span>
-          ))}
-        </div>
-      </div>
-    )
-  }
-
-  return (
-    <section id="skills" className="relative scroll-mt-24 py-16 sm:py-20">
-      <div className={sectionInner}>
-        <div className="max-w-3xl px-4 sm:px-6 lg:px-8">
-          <span className={nbBadge}>Skills</span>
-          <h2 className="mt-6 text-4xl text-black sm:text-5xl lg:text-6xl">Stack I use to ship.</h2>
-        </div>
-      </div>
-
-      <div className="mt-10 space-y-4">
-        <MarqueeRow items={rowA} bg="bg-[#ffe500]" />
-        <MarqueeRow items={rowB} reverse bg="bg-white" />
-      </div>
-
-      <div className={`${sectionInner} mt-8 flex flex-wrap gap-3 px-4 sm:px-6 lg:px-8`}>
-        <a href="#projects" className={nbBtnPrimary}>
-          See Skills in Projects <span aria-hidden="true">→</span>
-        </a>
-        <a href="#contact" className={nbBtnSecondary}>
-          Hire Me
-        </a>
       </div>
     </section>
   )
@@ -288,16 +228,16 @@ function ExpertiseSection() {
   const cardColors = ['bg-[#00e1ff]', 'bg-[#ffe500]']
 
   return (
-    <section id="expertise" className={sectionWrap}>
+    <section id="expertise" className={`${sectionWrap} bg-[#7cff6b]`}>
       <div className={sectionInner}>
         <div className="max-w-3xl">
-          <span className={nbBadge}>Experience</span>
+          <span className={`${nbBadge} bg-[#ffe500]`}>Experience</span>
           <h2 className="mt-6 text-4xl text-black sm:text-5xl lg:text-6xl">Work experience and present role.</h2>
         </div>
 
         <div className="mt-12 grid gap-5">
           {workList.map((work, index) => (
-            <article key={`${work.title}-${index}`} className={`${nbCard} p-6`}>
+            <article key={`${work.title}-${index}`} className={`${nbCard} group p-6 hover:rotate-[-0.5deg]`}>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className={`${nbChip} ${cardColors[index % cardColors.length]}`}>
@@ -352,6 +292,7 @@ function ProjectsSection() {
   ]
 
   const accentColors = ['bg-[#ffe500]', 'bg-[#00e1ff]', 'bg-[#ff7ad9]']
+  const projectCardColors = ['bg-[#ffe500]', 'bg-[#00e1ff]', 'bg-[#ff7ad9]']
   const projectsPerPage = 3
   const [currentPage, setCurrentPage] = useState(0)
   const totalPages = Math.ceil(projects.length / projectsPerPage)
@@ -375,39 +316,47 @@ function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className={sectionWrap}>
+    <section id="projects" className={`${sectionWrap} border-black bg-[#111111]`}>
       <div className={sectionInner}>
         <div className="max-w-3xl">
           <span className={`${nbBadge} bg-[#ff7ad9]`}>Projects</span>
-          <h2 className="mt-6 text-4xl text-black sm:text-5xl lg:text-6xl">Selected work and practical development projects.</h2>
+          <h2 className="mt-6 text-4xl text-white sm:text-5xl lg:text-6xl">Selected work and practical development projects.</h2>
         </div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="mt-12 grid items-stretch gap-6 lg:grid-cols-3">
           {visibleProjects.map((project, index) => (
-            <article key={project.title} className={`${nbCard} p-5 sm:p-6`}>
+            <article
+              key={project.title}
+              className={`group flex h-full flex-col border-[3px] border-black p-5 shadow-[6px_6px_0_0_#fff] transition-all duration-300 hover:-translate-y-2 hover:rotate-[-1deg] hover:scale-[1.02] hover:shadow-[12px_12px_0_0_#fff] sm:p-6 ${projectCardColors[index % projectCardColors.length]}`}
+            >
               <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="mt-4 text-2xl text-black">{project.title}</h3>
-                </div>
-                <span className={`mt-1 h-4 w-4 border-[3px] border-black ${accentColors[index % accentColors.length]} shadow-[3px_3px_0_0_#111]`} />
+                <h3 className="relative mt-4 inline-block min-h-[4rem] text-2xl leading-tight text-black transition-transform duration-300 group-hover:-translate-y-0.5">
+                  {project.title}
+                  <span aria-hidden="true" className="absolute -bottom-1 left-0 h-[3px] w-full origin-left scale-x-0 bg-black transition-transform duration-300 group-hover:scale-x-100" />
+                </h3>
+                <span className={`mt-1 h-4 w-4 shrink-0 border-[3px] border-black ${accentColors[index % accentColors.length]} shadow-[3px_3px_0_0_#111] transition-all duration-300 group-hover:rotate-180 group-hover:scale-125`} />
               </div>
 
-              <p className="mt-6 text-sm leading-8 text-neutral-800">{project.description}</p>
+              <p title={project.description} className="mt-6 line-clamp-5 min-h-[10rem] text-sm leading-8 text-neutral-900">
+                {project.description}
+              </p>
 
-              <div className="mt-6 flex flex-wrap gap-2">
+              <div className="mt-6 flex min-h-[3.5rem] flex-wrap content-start gap-2">
                 {project.stack.map((item) => (
-                  <span key={item} className={`${nbChip} bg-white`}>
+                  <span key={item} className="border-[3px] border-black bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-black shadow-[3px_3px_0_0_#111] transition-all duration-300 hover:-translate-y-0.5 hover:rotate-2 hover:scale-105 sm:text-sm">
                     {item}
                   </span>
                 ))}
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={nbBtnPrimary}>
-                  {project.liveLabel}
+              <div className="mt-auto flex flex-wrap gap-3 pt-8">
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={`${nbBtnPrimary} group/btn`}>
+                  <span className="transition-transform duration-300 group-hover/btn:scale-105">{project.liveLabel}</span>
+                  <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-0.5">↗</span>
                 </a>
-                <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className={nbBtnSecondary}>
-                  {project.codeLabel}
+                <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className={`${nbBtnSecondary} group/btn`}>
+                  <span className="transition-transform duration-300 group-hover/btn:scale-105">{project.codeLabel}</span>
+                  <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-0.5">↗</span>
                 </a>
               </div>
             </article>
@@ -484,7 +433,7 @@ function ContactSection() {
   ]
 
   return (
-    <section id="contact" className={sectionWrap}>
+    <section id="contact" className={`${sectionWrap} border-b-0 bg-[#00e1ff]`}>
       <div className={sectionInner}>
         <div className="max-w-3xl">
           <span className={`${nbBadge} bg-[#ffe500]`}>Contact</span>
@@ -510,10 +459,10 @@ function ContactSection() {
                 key={item.label}
                 href={item.href}
                 onClick={handleContactClick}
-                className={`${nbCard} p-6 transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[3px_3px_0_0_#111] sm:p-8`}
+                className={`${nbCard} group p-6 sm:p-8`}
               >
                 <p className="text-xs font-black uppercase tracking-[0.22em] text-black">{item.label}</p>
-                <p className="mt-4 break-all text-xl font-bold text-black">{item.value}</p>
+                <p className="mt-4 break-all text-xl font-bold text-black transition-transform duration-300 group-hover:translate-x-1">{item.value}</p>
               </a>
             )
           })}
@@ -526,12 +475,13 @@ function ContactSection() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 border-[3px] border-black bg-white px-5 py-3 text-black shadow-[4px_4px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-[#7cff6b] hover:shadow-[2px_2px_0_0_#111]"
+              className="group flex items-center gap-3 border-[3px] border-black bg-white px-5 py-3 text-black shadow-[4px_4px_0_0_#111] transition-all duration-300 hover:-translate-y-1.5 hover:rotate-[-1deg] hover:bg-[#7cff6b] hover:shadow-[7px_7px_0_0_#111] active:translate-y-0 active:shadow-[2px_2px_0_0_#111]"
             >
-              <span className="flex h-10 w-10 items-center justify-center border-[3px] border-black bg-[#ffe500] text-black">
+              <span className="flex h-10 w-10 items-center justify-center border-[3px] border-black bg-[#ffe500] text-black transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 group-hover:bg-[#ff7ad9]">
                 {item.icon}
               </span>
               <span className="text-sm font-bold uppercase tracking-wide">{item.label}</span>
+              <span aria-hidden="true" className="ml-auto inline-block opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">↗</span>
             </a>
           ))}
         </div>
@@ -570,10 +520,10 @@ function BackToTopButton() {
     <button
       type="button"
       onClick={scrollToHome}
-      className="fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center border-[3px] border-black bg-[#ffe500] text-black shadow-[4px_4px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_#111] sm:right-6 sm:bottom-6"
+      className="group fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center border-[3px] border-black bg-[#ffe500] text-black shadow-[4px_4px_0_0_#111] transition-all duration-300 hover:-translate-y-2 hover:bg-[#ff7ad9] hover:shadow-[6px_6px_0_0_#111] active:translate-y-0 active:shadow-[2px_2px_0_0_#111] sm:right-6 sm:bottom-6"
       aria-label="Back to top"
     >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-5 w-5" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-5 w-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:scale-110" aria-hidden="true">
         <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="square" strokeLinejoin="miter" />
       </svg>
     </button>
@@ -597,7 +547,6 @@ function App() {
       <main>
         <HomeSection />
         <AboutSection />
-        <SkillsSection />
         <ExpertiseSection />
         <ProjectsSection />
         <ContactSection />
