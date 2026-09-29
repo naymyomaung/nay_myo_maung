@@ -5,15 +5,29 @@ import cvFile from './assets/Nay-Myo-Maung-CV.pdf'
 const navLinks = [
   { label: 'Home', to: '#home' },
   { label: 'About', to: '#about' },
+  { label: 'Skills', to: '#skills' },
   { label: 'Expertise', to: '#expertise' },
   { label: 'Projects', to: '#projects' },
   { label: 'Contact', to: '#contact' },
 ]
 
 const homeActions = [
-  { label: 'Projects', to: '#projects' },
+  { label: 'View Projects', to: '#projects' },
+  { label: 'My Skills', to: '#skills' },
   { label: 'Contact', to: '#contact' },
 ]
+
+const nbCard = 'border-[3px] border-black bg-white shadow-[6px_6px_0_0_#111]'
+const nbBtnPrimary =
+  'inline-flex items-center justify-center gap-3 border-[3px] border-black bg-[#ffe500] px-6 py-3 text-sm font-bold uppercase tracking-wide text-black shadow-[4px_4px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_#111]'
+const nbBtnSecondary =
+  'inline-flex items-center justify-center border-[3px] border-black bg-white px-6 py-3 text-sm font-bold uppercase tracking-wide text-black shadow-[4px_4px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_#111]'
+const nbBadge =
+  'inline-flex border-[3px] border-black bg-[#7cff6b] px-4 py-2 text-xs font-bold uppercase tracking-[0.18em] text-black shadow-[3px_3px_0_0_#111]'
+const nbChip =
+  'border-[3px] border-black bg-[#fff4b0] px-4 py-2 text-xs font-bold uppercase tracking-wide text-black shadow-[3px_3px_0_0_#111] sm:text-sm'
+const sectionWrap = 'relative scroll-mt-24 px-4 py-16 sm:px-6 sm:py-20 lg:px-8'
+const sectionInner = 'relative mx-auto max-w-7xl'
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -21,12 +35,12 @@ function Navbar() {
   const closeMenu = () => setIsOpen(false)
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b-[3px] border-black bg-[#ffe500]">
       <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <a
           href="#home"
           onClick={closeMenu}
-          className="text-sm font-semibold tracking-[0.3em] text-white uppercase"
+          className="border-[3px] border-black bg-white px-3 py-1 text-sm font-black tracking-[0.18em] text-black uppercase shadow-[3px_3px_0_0_#111]"
         >
           Nay Myo Maung
         </a>
@@ -34,12 +48,12 @@ function Navbar() {
         <button
           type="button"
           onClick={() => setIsOpen((open) => !open)}
-          className="inline-flex items-center justify-center rounded-xl border border-white/10 px-3 py-2 text-slate-200 transition hover:border-cyan-400/40 hover:text-cyan-300 md:hidden"
+          className="inline-flex items-center justify-center border-[3px] border-black bg-white px-3 py-2 text-black shadow-[3px_3px_0_0_#111] md:hidden"
           aria-expanded={isOpen}
           aria-label="Toggle navigation"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="round" />
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-5 w-5" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" strokeLinecap="square" />
           </svg>
         </button>
 
@@ -51,7 +65,7 @@ function Navbar() {
       </nav>
 
       {isOpen && (
-        <div className="border-t border-white/10 px-4 py-4 sm:px-6 md:hidden">
+        <div className="border-t-[3px] border-black bg-white px-4 py-4 sm:px-6 md:hidden">
           <div className="flex flex-col gap-2">
             {navLinks.map((link) => (
               <NavItem key={link.to} to={link.to} label={link.label} onClick={closeMenu} />
@@ -68,7 +82,7 @@ function NavItem({ to, label, onClick }) {
     <a
       href={to}
       onClick={onClick}
-      className="rounded-full border border-white/10 px-4 py-2 text-sm text-slate-300 transition hover:border-cyan-400/30 hover:text-white"
+      className="border-[3px] border-black bg-white px-4 py-2 text-sm font-bold uppercase tracking-wide text-black shadow-[3px_3px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-[#ff7ad9] hover:shadow-[2px_2px_0_0_#111]"
     >
       {label}
     </a>
@@ -77,31 +91,16 @@ function NavItem({ to, label, onClick }) {
 
 function InfoSection({ id, eyebrow, title, description, actions = [] }) {
   return (
-    <section id={id} className="relative overflow-hidden scroll-mt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.16),transparent_30%)]" />
-      <div className="relative mx-auto flex min-h-[calc(100vh-81px)] max-w-7xl items-center justify-center px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section id={id} className={sectionWrap}>
+      <div className={`${sectionInner} flex min-h-[calc(100vh-81px)] items-center justify-center`}>
         <div className="max-w-3xl text-center">
-          <span className="mb-6 inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-medium tracking-[0.35em] text-cyan-300 uppercase">
-            {eyebrow}
-          </span>
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-7xl">
-            {title}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg mx-auto">
-            {description}
-          </p>
+          <span className={nbBadge}>{eyebrow}</span>
+          <h1 className="mt-6 text-4xl text-black sm:text-5xl lg:text-7xl">{title}</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-neutral-800 sm:text-lg">{description}</p>
           {actions.length > 0 ? (
             <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center">
               {actions.map((action, index) => (
-                <a
-                  key={action.to}
-                  href={action.to}
-                  className={
-                    index === 0
-                      ? 'rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300'
-                      : 'rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:border-cyan-400/30 hover:text-cyan-300'
-                  }
-                >
+                <a key={action.to} href={action.to} className={index === 0 ? nbBtnPrimary : nbBtnSecondary}>
                   {action.label}
                 </a>
               ))}
@@ -114,32 +113,44 @@ function InfoSection({ id, eyebrow, title, description, actions = [] }) {
 }
 
 function HomeSection() {
+  const stack = ['C#', '.NET', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase']
+
   return (
-    <section id="home" className="relative overflow-hidden scroll-mt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.16),transparent_30%)]" />
-      <div className="relative mx-auto flex min-h-[calc(100vh-81px)] max-w-7xl items-center justify-center px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section id="home" className={sectionWrap}>
+      <div className={`${sectionInner} flex min-h-[calc(100vh-81px)] items-center justify-center`}>
         <div className="max-w-3xl text-center">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-7xl">
+          <span className={nbBadge}>C# + React Developer — Available for work</span>
+          <h1 className="mt-6 text-4xl text-black sm:text-5xl lg:text-7xl">
             Nay Myo Maung{' '}
-            <span className="align-middle text-xl text-cyan-300 sm:text-2xl lg:text-3xl">(Izumi)</span>
+            <span className="align-middle text-xl text-black sm:text-2xl lg:text-3xl">(Izumi)</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
-            I am a C# and React Web Developer specializing in building modern, scalable, and user-friendly enterprise web applications with robust backend architecture, responsive front-end interfaces, clean code, creative problem-solving, and efficient AI-assisted and traditional development workflows.
+          <p className="mt-4 text-sm font-bold uppercase tracking-[0.22em] text-neutral-700">
+            Taunggyi, Myanmar — Enterprise Web Apps
           </p>
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center">
-            {homeActions.map((action, index) => (
-              <a
-                key={action.to}
-                href={action.to}
-                className={
-                  index === 0
-                    ? 'rounded-full bg-cyan-400 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300'
-                    : 'rounded-full border border-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:border-cyan-400/30 hover:text-cyan-300'
-                }
-              >
-                {action.label}
-              </a>
+          <p className="mx-auto mt-6 max-w-2xl border-[3px] border-black bg-white p-5 text-base leading-8 text-neutral-800 shadow-[6px_6px_0_0_#111] sm:text-lg">
+            I build modern, scalable, and user-friendly enterprise web applications with robust
+            backend architecture, responsive front-end interfaces, clean code, and efficient
+            AI-assisted workflows.
+          </p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+            {stack.map((item) => (
+              <span key={item} className={nbChip}>
+                {item}
+              </span>
             ))}
+          </div>
+          {/* link-style actions like reference design */}
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+            <a href="#projects" className={`${nbBtnPrimary} group`}>
+              View Projects
+              <span aria-hidden="true" className="inline-block transition-transform group-hover:translate-x-1">→</span>
+            </a>
+            <a href="#skills" className="inline-flex items-center gap-2 px-2 py-3 text-sm font-bold uppercase tracking-wide text-black underline decoration-[3px] decoration-[#ff7ad9] underline-offset-8 transition hover:bg-[#ff7ad9] hover:decoration-black">
+              My Skills <span aria-hidden="true">→</span>
+            </a>
+            <a href="#contact" className="inline-flex items-center gap-2 px-2 py-3 text-sm font-bold uppercase tracking-wide text-black underline decoration-[3px] decoration-[#00e1ff] underline-offset-8 transition hover:bg-[#00e1ff] hover:decoration-black">
+              Contact <span aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
       </div>
@@ -148,67 +159,109 @@ function HomeSection() {
 }
 
 function AboutSection() {
-const highlights = [
+  const highlights = [
     'C# and React Developer',
     'Enterprise Web Solutions',
     'IT Support Specialist',
     'Responsive UI/UX Focus',
     'Robust Backend Architecture',
     'AI-Assisted Workflows',
-  ];
+  ]
 
   return (
-    <section id="about" className="relative overflow-hidden scroll-mt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.16),transparent_30%)]" />
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section id="about" className={sectionWrap}>
+      <div className={sectionInner}>
         <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
-          <div className="rounded-4xl border border-white/10 bg-slate-900/65 p-8 backdrop-blur-xl sm:p-10">
-            <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-medium tracking-[0.35em] text-cyan-300 uppercase">
-              About Me
-            </span>
-            <div className="mt-8 space-y-6 text-sm leading-8 text-slate-300 sm:text-base lg:text-lg">
+          <div className={`${nbCard} p-8 sm:p-10`}>
+            <span className={nbBadge}>About Me</span>
+            <div className="mt-8 space-y-6 text-sm leading-8 text-neutral-800 sm:text-base lg:text-lg">
               <p>
-I’m Nay Myo Maung, a 23-year-old C# and React Developer and IT Support Specialist from Taunggyi, Shan State, Myanmar. I specialize in building modern, scalable, and user-friendly enterprise web applications with robust backend architecture, responsive design, and maintainable code.              </p>
+                I’m Nay Myo Maung, a 23-year-old C# and React Developer and IT Support Specialist from Taunggyi, Shan State, Myanmar. I specialize in building modern, scalable, and user-friendly enterprise web applications with robust backend architecture, responsive design, and maintainable code.
+              </p>
               <p>
-My main focus is C# and React development, with strong capabilities in creating practical digital solutions that combine strong UI/UX structure, performance, and real-world functionality. I work with both AI-assisted workflows and traditional development methods to improve productivity and deliver efficient results.              </p>
+                My main focus is C# and React development, with strong capabilities in creating practical digital solutions that combine strong UI/UX structure, performance, and real-world functionality. I work with both AI-assisted workflows and traditional development methods to improve productivity and deliver efficient results.
+              </p>
               <p>
-I’m passionate about modern technology, continuous learning, and developing web experiences that are both visually clean and technically reliable.              </p>
+                I’m passionate about modern technology, continuous learning, and developing web experiences that are both visually clean and technically reliable.
+              </p>
             </div>
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-4xl border border-white/10 bg-slate-900/65 p-8 backdrop-blur-xl">
-              <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">Profile Highlights</p>
+            <div className={`${nbCard} p-8`}>
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-black">Profile Highlights</p>
               <div className="mt-6 flex flex-wrap gap-3">
                 {highlights.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs text-cyan-200 sm:text-sm"
-                  >
+                  <span key={item} className={nbChip}>
                     {item}
                   </span>
                 ))}
               </div>
-              <a
-                href={cvFile}
-                download="Nay-Myo-Maung-CV.pdf"
-                className="mt-8 inline-flex items-center gap-3 rounded-full bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
-              >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
-                  <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" strokeLinecap="round" strokeLinejoin="round" />
+              <a href={cvFile} download="Nay-Myo-Maung-CV.pdf" className={`${nbBtnPrimary} mt-8`}>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-5 w-5" aria-hidden="true">
+                  <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" strokeLinecap="square" strokeLinejoin="miter" />
                 </svg>
                 Download CV
               </a>
             </div>
 
-            <div className="rounded-4xl border border-white/10 bg-linear-to-r from-cyan-400/10 to-fuchsia-500/10 p-8 backdrop-blur-xl">
-              <p className="text-xs uppercase tracking-[0.3em] text-slate-300">Focus</p>
-              <p className="mt-4 text-sm leading-8 text-slate-200 sm:text-base">
+            <div className="border-[3px] border-black bg-[#ff7ad9] p-8 shadow-[6px_6px_0_0_#111]">
+              <p className="text-xs font-black uppercase tracking-[0.22em] text-black">Focus</p>
+              <p className="mt-4 text-sm leading-8 text-black sm:text-base">
                 Modern technology, continuous learning, clean web interfaces, scalable systems, and practical solutions with real-world value.
               </p>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+  )
+}
+
+function SkillsSection() {
+  const rowA = ['C#', '.NET', 'React', 'TypeScript', 'Tailwind CSS', 'Vite', 'REST APIs']
+  const rowB = ['Supabase', 'PostgreSQL', 'Git', 'GitHub', 'Vercel', 'AI-Assisted Dev', 'IT Support']
+
+  const MarqueeRow = ({ items, reverse = false, bg = 'bg-[#ffe500]' }) => {
+    const doubled = [...items, ...items]
+    return (
+      <div className={`marquee-mask border-y-[3px] border-black ${bg} py-3`}>
+        <div className={`flex w-max items-center gap-3 pr-3 ${reverse ? 'animate-marquee-reverse' : 'animate-marquee'}`}>
+          {doubled.map((skill, i) => (
+            <span
+              key={`${skill}-${i}`}
+              className="inline-flex shrink-0 items-center gap-2 border-[3px] border-black bg-white px-4 py-2 text-xs font-bold uppercase tracking-wide text-black shadow-[3px_3px_0_0_#111] sm:text-sm"
+            >
+              <span aria-hidden="true" className="inline-block h-2.5 w-2.5 border-2 border-black bg-[#ff7ad9]" />
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <section id="skills" className="relative scroll-mt-24 py-16 sm:py-20">
+      <div className={sectionInner}>
+        <div className="max-w-3xl px-4 sm:px-6 lg:px-8">
+          <span className={nbBadge}>Skills</span>
+          <h2 className="mt-6 text-4xl text-black sm:text-5xl lg:text-6xl">Stack I use to ship.</h2>
+        </div>
+      </div>
+
+      <div className="mt-10 space-y-4">
+        <MarqueeRow items={rowA} bg="bg-[#ffe500]" />
+        <MarqueeRow items={rowB} reverse bg="bg-white" />
+      </div>
+
+      <div className={`${sectionInner} mt-8 flex flex-wrap gap-3 px-4 sm:px-6 lg:px-8`}>
+        <a href="#projects" className={nbBtnPrimary}>
+          See Skills in Projects <span aria-hidden="true">→</span>
+        </a>
+        <a href="#contact" className={nbBtnSecondary}>
+          Hire Me
+        </a>
       </div>
     </section>
   )
@@ -232,40 +285,30 @@ function ExpertiseSection() {
     },
   ]
 
+  const cardColors = ['bg-[#00e1ff]', 'bg-[#ffe500]']
+
   return (
-    <section id="expertise" className="relative overflow-hidden scroll-mt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.16),transparent_30%)]" />
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section id="expertise" className={sectionWrap}>
+      <div className={sectionInner}>
         <div className="max-w-3xl">
-          <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-medium tracking-[0.35em] text-cyan-300 uppercase">
-            Experience
-          </span>
-          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Work experience and present role.
-          </h2>
+          <span className={nbBadge}>Experience</span>
+          <h2 className="mt-6 text-4xl text-black sm:text-5xl lg:text-6xl">Work experience and present role.</h2>
         </div>
 
         <div className="mt-12 grid gap-5">
           {workList.map((work, index) => (
-            <article
-              key={`${work.title}-${index}`}
-              className="rounded-4xl border border-white/10 bg-slate-900/65 p-6 backdrop-blur-xl"
-            >
+            <article key={`${work.title}-${index}`} className={`${nbCard} p-6`}>
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">
+                  <p className={`${nbChip} ${cardColors[index % cardColors.length]}`}>
                     Experience {String(index + 1).padStart(2, '0')}
                   </p>
-                  <h3 className="mt-3 text-2xl font-semibold text-white">{work.title}</h3>
-                  <p className="mt-2 text-sm text-slate-400">{work.location}</p>
+                  <h3 className="mt-3 text-2xl text-black">{work.title}</h3>
+                  <p className="mt-2 text-sm font-medium text-neutral-700">{work.location}</p>
                 </div>
-                <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-xs text-cyan-200">
-                  {work.date}
-                </span>
+                <span className={`${nbChip} bg-[#7cff6b]`}>{work.date}</span>
               </div>
-              <p className="mt-5 max-w-4xl text-sm leading-8 text-slate-300 sm:text-base">
-                {work.description}
-              </p>
+              <p className="mt-5 max-w-4xl text-sm leading-8 text-neutral-800 sm:text-base">{work.description}</p>
             </article>
           ))}
         </div>
@@ -286,11 +329,11 @@ function ProjectsSection() {
       codeUrl: 'https://github.com/izumi-dev98/E_Card-.git',
       codeLabel: 'Source Code',
     },
-      {
+    {
       title: 'NOSH CPMS',
       description:
         'A Smart Parking Management System built with React, TypeScript, Vite, and Supabase. It streamlines parking operations with real-time slot tracking, multi-category vehicle handling, detailed reporting, and secure role-based access control (RBAC). Designed for efficiency and scalability!',
-      stack: ['React', 'Tailwind CSS' , 'Supabase'],
+      stack: ['React', 'Tailwind CSS', 'Supabase'],
       liveUrl: 'https://nosh-cpms.vercel.app/',
       liveLabel: 'Live Demo',
       codeUrl: 'https://github.com/izumi-dev98/Nosh_CPMS.git',
@@ -308,6 +351,7 @@ function ProjectsSection() {
     },
   ]
 
+  const accentColors = ['bg-[#ffe500]', 'bg-[#00e1ff]', 'bg-[#ff7ad9]']
   const projectsPerPage = 3
   const [currentPage, setCurrentPage] = useState(0)
   const totalPages = Math.ceil(projects.length / projectsPerPage)
@@ -331,60 +375,38 @@ function ProjectsSection() {
   }
 
   return (
-    <section id="projects" className="relative overflow-hidden scroll-mt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.16),transparent_30%)]" />
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section id="projects" className={sectionWrap}>
+      <div className={sectionInner}>
         <div className="max-w-3xl">
-          <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-medium tracking-[0.35em] text-cyan-300 uppercase">
-            Projects
-          </span>
-          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Selected work and practical development projects.
-          </h2>
+          <span className={`${nbBadge} bg-[#ff7ad9]`}>Projects</span>
+          <h2 className="mt-6 text-4xl text-black sm:text-5xl lg:text-6xl">Selected work and practical development projects.</h2>
         </div>
 
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {visibleProjects.map((project) => (
-            <article
-              key={project.title}
-              className="group rounded-4xl border border-white/10 bg-slate-900/65 p-5 backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-400/30 sm:p-6"
-            >
+          {visibleProjects.map((project, index) => (
+            <article key={project.title} className={`${nbCard} p-5 sm:p-6`}>
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  
-                  <h3 className="mt-4 text-2xl font-semibold text-white">{project.title}</h3>
+                  <h3 className="mt-4 text-2xl text-black">{project.title}</h3>
                 </div>
-                <span className="mt-1 h-3 w-3 rounded-full bg-cyan-300 shadow-[0_0_16px_rgba(34,211,238,0.7)]" />
+                <span className={`mt-1 h-4 w-4 border-[3px] border-black ${accentColors[index % accentColors.length]} shadow-[3px_3px_0_0_#111]`} />
               </div>
 
-              <p className="mt-6 text-sm leading-8 text-slate-300">{project.description}</p>
+              <p className="mt-6 text-sm leading-8 text-neutral-800">{project.description}</p>
 
               <div className="mt-6 flex flex-wrap gap-2">
                 {project.stack.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-2 text-xs text-cyan-200"
-                  >
+                  <span key={item} className={`${nbChip} bg-white`}>
                     {item}
                   </span>
                 ))}
               </div>
 
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
-                >
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className={nbBtnPrimary}>
                   {project.liveLabel}
                 </a>
-                <a
-                  href={project.codeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
-                >
+                <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className={nbBtnSecondary}>
                   {project.codeLabel}
                 </a>
               </div>
@@ -393,21 +415,13 @@ function ProjectsSection() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={handlePrev}
-            className="rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-white transition hover:border-cyan-400/30 hover:text-cyan-300"
-          >
+          <button type="button" onClick={handlePrev} className={nbBtnSecondary}>
             Prev
           </button>
-          <span className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm text-cyan-200">
+          <span className={`${nbChip} bg-[#7cff6b]`}>
             {String(currentPage + 1).padStart(2, '0')} / {String(totalPages).padStart(2, '0')}
           </span>
-          <button
-            type="button"
-            onClick={handleNext}
-            className="rounded-full bg-cyan-400 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
-          >
+          <button type="button" onClick={handleNext} className={nbBtnPrimary}>
             Next
           </button>
         </div>
@@ -467,21 +481,15 @@ function ContactSection() {
         </svg>
       ),
     },
-   
   ]
 
   return (
-    <section id="contact" className="relative overflow-hidden scroll-mt-24">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.16),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.16),transparent_30%)]" />
-      <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+    <section id="contact" className={sectionWrap}>
+      <div className={sectionInner}>
         <div className="max-w-3xl">
-          <span className="inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-xs font-medium tracking-[0.35em] text-cyan-300 uppercase">
-            Contact
-          </span>
-          <h2 className="mt-6 text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Let’s connect and build something useful.
-          </h2>
-          <p className="mt-6 text-sm leading-8 text-slate-300 sm:text-base lg:text-lg">
+          <span className={`${nbBadge} bg-[#ffe500]`}>Contact</span>
+          <h2 className="mt-6 text-4xl text-black sm:text-5xl lg:text-6xl">Let’s connect and build something useful.</h2>
+          <p className="mt-6 text-sm leading-8 text-neutral-800 sm:text-base lg:text-lg">
             Feel free to contact me for collaboration, freelance work, development opportunities, or technical discussions.
           </p>
         </div>
@@ -502,10 +510,10 @@ function ContactSection() {
                 key={item.label}
                 href={item.href}
                 onClick={handleContactClick}
-                className="rounded-4xl border border-white/10 bg-slate-900/65 p-6 backdrop-blur-xl transition hover:border-cyan-400/30 hover:-translate-y-1 sm:p-8"
+                className={`${nbCard} p-6 transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[3px_3px_0_0_#111] sm:p-8`}
               >
-                <p className="text-xs uppercase tracking-[0.3em] text-cyan-300">{item.label}</p>
-                <p className="mt-4 text-xl font-semibold text-white break-all">{item.value}</p>
+                <p className="text-xs font-black uppercase tracking-[0.22em] text-black">{item.label}</p>
+                <p className="mt-4 break-all text-xl font-bold text-black">{item.value}</p>
               </a>
             )
           })}
@@ -518,12 +526,12 @@ function ContactSection() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-full border border-white/10 bg-slate-900/65 px-5 py-3 text-white backdrop-blur-xl transition hover:border-cyan-400/30 hover:-translate-y-1"
+              className="flex items-center gap-3 border-[3px] border-black bg-white px-5 py-3 text-black shadow-[4px_4px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:bg-[#7cff6b] hover:shadow-[2px_2px_0_0_#111]"
             >
-              <span className="flex h-10 w-10 items-center justify-center rounded-full border border-cyan-400/20 bg-cyan-400/10 text-cyan-200">
+              <span className="flex h-10 w-10 items-center justify-center border-[3px] border-black bg-[#ffe500] text-black">
                 {item.icon}
               </span>
-              <span className="text-sm text-slate-200">{item.label}</span>
+              <span className="text-sm font-bold uppercase tracking-wide">{item.label}</span>
             </a>
           ))}
         </div>
@@ -562,11 +570,11 @@ function BackToTopButton() {
     <button
       type="button"
       onClick={scrollToHome}
-      className="fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-cyan-400/30 bg-slate-900/80 text-cyan-300 shadow-[0_0_24px_rgba(34,211,238,0.25)] backdrop-blur-xl transition hover:-translate-y-1 hover:border-cyan-300 hover:text-white sm:right-6 sm:bottom-6"
+      className="fixed right-4 bottom-4 z-50 flex h-12 w-12 items-center justify-center border-[3px] border-black bg-[#ffe500] text-black shadow-[4px_4px_0_0_#111] transition hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[2px_2px_0_0_#111] sm:right-6 sm:bottom-6"
       aria-label="Back to top"
     >
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-5 w-5" aria-hidden="true">
-        <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="h-5 w-5" aria-hidden="true">
+        <path d="M12 19V5M5 12l7-7 7 7" strokeLinecap="square" strokeLinejoin="miter" />
       </svg>
     </button>
   )
@@ -574,8 +582,8 @@ function BackToTopButton() {
 
 function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-slate-950/95">
-      <div className="mx-auto flex max-w-7xl justify-center px-6 py-8 text-center text-sm text-slate-400 lg:px-8">
+    <footer className="border-t-[3px] border-black bg-black text-white">
+      <div className="mx-auto flex max-w-7xl justify-center px-6 py-8 text-center text-sm font-bold uppercase tracking-wide lg:px-8">
         <p>© 2026 Nay Myo Maung (Izumi). All rights reserved.</p>
       </div>
     </footer>
@@ -584,11 +592,12 @@ function Footer() {
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="nb-grid min-h-screen text-black">
       <Navbar />
       <main>
         <HomeSection />
         <AboutSection />
+        <SkillsSection />
         <ExpertiseSection />
         <ProjectsSection />
         <ContactSection />

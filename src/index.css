@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 html {
@@ -9,9 +9,9 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #0a0a0f;
-  color: #f8fafc;
-  font-family: 'Fira Code', ui-monospace, SFMono-Regular, monospace;
+  background: #f4efe4;
+  color: #111111;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
 }
 
 h1,
@@ -20,7 +20,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Sora', ui-sans-serif, system-ui, sans-serif;
+  font-family: 'Archivo Black', 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.03em;
 }
 
 * {
@@ -40,45 +41,55 @@ button {
   min-height: 100vh;
 }
 
-.title-glow {
-  color: #22d3ee;
-  text-shadow: 0 0 12px rgba(34, 211, 238, 0.55);
-  animation: pulse-glow 2.4s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-  0%,
-  100% {
-    color: #22d3ee;
-    text-shadow: 0 0 12px rgba(34, 211, 238, 0.45);
-    transform: translateY(0);
-  }
-
-  50% {
-    color: #a855f7;
-    text-shadow: 0 0 20px rgba(168, 85, 247, 0.65);
-    transform: translateY(-2px);
-  }
-}
-
-.hero-card {
-  animation: float-card 4.8s ease-in-out infinite;
-}
-
-@keyframes float-card {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
+.nb-grid {
+  background-color: #f4efe4;
+  background-image:
+    linear-gradient(#11111112 1px, transparent 1px),
+    linear-gradient(90deg, #11111112 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .title-glow,
-  .hero-card {
-    animation: none;
+  html {
+    scroll-behavior: auto;
   }
+  .animate-marquee,
+  .animate-marquee-reverse {
+    animation: none !important;
+  }
+}
+
+@keyframes nb-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes nb-marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-marquee {
+  animation: nb-marquee 28s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: nb-marquee-reverse 32s linear infinite;
+}
+
+.marquee-mask {
+  overflow: hidden;
+}
+
+.marquee-mask:hover .animate-marquee,
+.marquee-mask:hover .animate-marquee-reverse {
+  animation-play-state: paused;
 }
